@@ -8,6 +8,7 @@
 import scrapy
 
 
+# Specify the item to send data through pipeline
 class CraigslistbotItem(scrapy.Item):
     # Fields for item
     name = scrapy.Field()

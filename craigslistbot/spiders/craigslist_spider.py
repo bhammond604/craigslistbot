@@ -8,33 +8,21 @@ class CraigslistSpider(scrapy.Spider):
 	
 	Methods:
 		__init__() - Initialize the spider
+		start_requests() - Send HTTP requests
 		parse() - Parse the response and write to file
 	"""
 	# Specify the spiders name
 	name = "craigslistbot"
 	
-	# def __init__(self, location=None, category=None):
-		# """Initialize the spider
-		
-		# Arguments:
-			# self - object - The CraigslistSpider object
-			# location - string - The location to use
-			# category - string - The category to scrape
-		# """
-		
-		# # Super
-		# super(CraigslistSpider, self).__init__(*args, **kwargs)
-		
-		# # Specify the starting URLs
-		# self.start_urls = ["https://%s.craigslist.org/search/%s" % (location, category)]
-		
 	def start_requests(self):
+		"""Send HTTP requests
+		
+		Arguments:
+			self - object - The CraigslistSpider object
+		"""
+		
+		# Yield the HTTP response
 		yield scrapy.Request("https://%s.craigslist.org/search/%s" % (self.location, self.category))
-	
-	# The URLs to automatically send HTTP requests to
-	start_urls = [
-		"https://dallas.craigslist.org/search/prk",
-	]
 	
 	def parse(self, response):
 		""" Parse the response and write to file
